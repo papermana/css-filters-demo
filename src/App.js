@@ -106,15 +106,25 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="App">
-        <h1>CSS Filters</h1>
-        <img className="preview-img"
-          src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"
-          alt="Cat in a rolled sheet of paper"
-          width="640"
-          height="480"
-          style={{filter: this.getFilterValue()}} />
+        <header className="header">
+          <h1>CSS Filters</h1>
+          <p className="note">
+            Except drop-shadow
+          </p>
+        </header>
+        <main className="main">
+          <div className="preview-img">
+            <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"
+              alt="Cat in a rolled sheet of paper"
+              width="640"
+              height="480"
+              style={{filter: this.getFilterValue()}} />
+          </div>
 
-        {this.controls}
+          <div className="filters-area">
+            {this.controls}
+          </div>
+        </main>
       </div>
     );
   }

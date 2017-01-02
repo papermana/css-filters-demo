@@ -1,12 +1,43 @@
 .App {
-  text-align: center;
   font-family: monospace;
   font-size: 17px;
+  text-align: center;
+}
+
+.header__note {
+  font-size: 0.66em;
+}
+
+.main {
+  display: flex;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
 }
 
 .preview-img {
-  float: left;
-  margin: 35px 25px 35px 10px;
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-right: 25px;
+}
+
+.filters-area {
+  flex: 2;
+}
+
+@media screen and (max-width: 1024px) {
+  .filters-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .filter-controls {
@@ -14,8 +45,9 @@
   margin: 20px 0;
 }
 
+
 .filter-controls__name {
-  width: 100px;
+  min-width: 100px;
   align-self: flex-end;
 }
 
@@ -25,5 +57,5 @@
 }
 
 .filter-controls__slider-wrapper {
-  width: 275px;
+  min-width: 275px;
 }
