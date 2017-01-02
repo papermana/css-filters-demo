@@ -66,7 +66,7 @@ class App extends React.PureComponent {
     opacity: {
       min: 0,
       max: 100,
-      defaultValue: 0,
+      defaultValue: 100,
       units: '%',
     },
     saturate: {
