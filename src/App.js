@@ -107,9 +107,9 @@ class App extends React.PureComponent {
     return (
       <div className="App">
         <h1>CSS Filters</h1>
-        <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"
+        <img className="preview-img"
+          src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"
           alt="Cat in a rolled sheet of paper"
-          id="target"
           width="640"
           height="480"
           style={{filter: this.getFilterValue()}} />

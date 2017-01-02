@@ -1,24 +1,25 @@
 .App {
   text-align: center;
+  font-family: monospace;
+  font-size: 17px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.preview-img {
+  float: left;
+  margin: 10px;
+  margin-right: 25px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.filter-controls {
+  display: flex;
+  margin: 20px 0;
 }
 
-.App-intro {
-  font-size: large;
+.filter-controls__name {
+  width: 100px;
+  align-self: flex-end;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.filter-controls__slider-wrapper {
+  width: 275px;
 }

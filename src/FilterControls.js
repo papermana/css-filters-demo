@@ -19,16 +19,27 @@ class FilterControls extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        <div>{this.props.name}</div>
-        <div>{'' + this.state.value + this.props.units}</div>
-        <span>{'' + this.props.min + this.props.units}</span>
-        <input type="range"
-          min={this.props.min}
-          max={this.props.max}
-          defaultValue={this.state.value}
-          onChange={this.onChange} />
-        <span>{'' + this.props.max + this.props.units}</span>
+      <div className="filter-controls">
+        <div className="filter-controls__name">
+          {this.props.name}
+        </div>
+        <div className="filter-controls__slider-wrapper">
+          <div className="filter-controls__current-value">
+            {'' + this.state.value + this.props.units}
+          </div>
+          <span className="filter-controls__min-value">
+            {'' + this.props.min + this.props.units}
+          </span>
+          <input className="filter-controls__slider"
+            type="range"
+            min={this.props.min}
+            max={this.props.max}
+            defaultValue={this.state.value}
+            onChange={this.onChange} />
+          <span className="filter-controls__max-value">
+            {'' + this.props.max + this.props.units}
+          </span>
+        </div>
       </div>
     );
   }
