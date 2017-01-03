@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Preview from './Preview';
 import FilterControls from './FilterControls';
 
 class App extends React.PureComponent {
@@ -113,13 +114,7 @@ class App extends React.PureComponent {
           </p>
         </header>
         <main className="main">
-          <div className="preview-img">
-            <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"
-              alt="Cat in a rolled sheet of paper"
-              width="640"
-              height="480"
-              style={{filter: this.getFilterValue()}} />
-          </div>
+          <Preview filters={this.getFilterValue()} />
 
           <div className="filters-area">
             {this.controls}
