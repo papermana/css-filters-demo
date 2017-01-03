@@ -2,96 +2,36 @@ import React from 'react';
 import './App.css';
 import Preview from './Preview';
 import FilterControls from './FilterControls';
+import filterAttributes from './filterAttributes';
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const filterValues = Object.keys(this.filterAttributes)
-      .reduce((acc, filterName) => (
-        Object.assign({}, acc, {
-          [filterName]: this.filterAttributes[filterName].defaultValue,
-        })
+    const filterValues = filterAttributes
+      .reduce((acc, f) => (
+        {
+          ...acc,
+          [f.name]: f.defaultValue,
+        }
       ), {});
 
     this.state = {
       filterValues,
     };
 
-    this.controls = Object.keys(this.filterAttributes)
+    this.controls = filterAttributes
       .map(f => (
-        <FilterControls key={f}
-          name={f}
+        <FilterControls key={f.name}
           onChange={this.onChange}
-          {...this.filterAttributes[f]} />
+          {...f} />
       ));
   }
 
-  filterAttributes = {
-    blur: {
-      min: 0,
-      max: 50,
-      defaultValue: 0,
-      units: 'px',
-    },
-    brightness: {
-      min: 0,
-      max: 200,
-      defaultValue: 100,
-      units: '%',
-    },
-    contrast: {
-      min: 0,
-      max: 200,
-      defaultValue: 100,
-      units: '%',
-    },
-    grayscale: {
-      min: 0,
-      max: 100,
-      defaultValue: 0,
-      units: '%',
-    },
-    'hue-rotate': {
-      min: 0,
-      max: 360,
-      defaultValue: 0,
-      units: 'deg',
-    },
-    invert: {
-      min: 0,
-      max: 100,
-      defaultValue: 0,
-      units: '%',
-    },
-    opacity: {
-      min: 0,
-      max: 100,
-      defaultValue: 100,
-      units: '%',
-    },
-    saturate: {
-      min: 0,
-      max: 200,
-      defaultValue: 100,
-      units: '%',
-    },
-    sepia: {
-      min: 0,
-      max: 100,
-      defaultValue: 0,
-      units: '%',
-    },
-  }
-
   getFilterValue = () => {
-    return Object.keys(this.filterAttributes)
-      .filter(f => (
-        this.filterAttributes[f].defaultValue !== Number(this.state.filterValues[f])
-      ))
-      .map(f => (
-        `${f}(${this.state.filterValues[f]}${this.filterAttributes[f].units})`
-      ))
+    return filterAttributes
+      .filter(f => f.defaultValue !== Number(this.state.filterValues[f.name]))
+      .map(f => `${f.name}(${this.state.filterValues[f.name]}${f.units})`)
       .join(' ');
   }
 
@@ -104,25 +44,22 @@ class App extends React.PureComponent {
     });
   }
 
-  render() {
-    return (
-      <div className="App">
-        <header className="header">
-          <h1>CSS Filters</h1>
-          <p className="note">
-            Except drop-shadow
-          </p>
-        </header>
-        <main className="main">
-          <Preview filters={this.getFilterValue()} />
-
-          <div className="filters-area">
-            {this.controls}
-          </div>
-        </main>
-      </div>
-    );
-  }
+  render = () => (
+    <div className="App">
+      <header className="header">
+        <h1>CSS Filters</h1>
+        <p className="note">
+          Except drop-shadow
+        </p>
+      </header>
+      <main className="main">
+        <Preview filters={this.getFilterValue()} />
+        <div className="filters-area">
+          {this.controls}
+        </div>
+      </main>
+    </div>
+  )
 }
 
 export default App;

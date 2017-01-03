@@ -1,4 +1,5 @@
 import React from 'react';
+import c from 'classnames';
 
 class Preview extends React.PureComponent {
   state = {
@@ -21,7 +22,10 @@ class Preview extends React.PureComponent {
     const images = this.imageSrcs
       .map((img, i) => (
         <img key={i}
-          className={`preview__img ${i === this.state.currentImage ? 'preview__img--current' : ''}`}
+          className={c(
+            'preview__img',
+            {'preview__img--current': i === this.state.currentImage},
+          )}
           src={img}
           alt=""
           style={{filter: this.props.filters}} />
@@ -29,7 +33,10 @@ class Preview extends React.PureComponent {
     const buttons = this.imageSrcs
       .map((img, i) => (
         <button key={i}
-          className={`preview__button ${i === this.state.currentImage ? 'preview__button--current' : ''}`}
+          className={c(
+            'preview__button',
+            {'preview__button--current': i === this.state.currentImage},
+          )}
           data-index={i}
           onClick={this.onClick} />
       ));
